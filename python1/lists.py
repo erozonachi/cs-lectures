@@ -11,3 +11,7 @@ arr.append(41)
 print(arr)
 print(arr2)
 print(numbers)
+
+# Loops
+for entry in arr:
+    print(entry)
