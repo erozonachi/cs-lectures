@@ -12,6 +12,10 @@ print(arr)
 print(arr2)
 print(numbers)
 
-# Loops
+# Classical for Loops
 for entry in arr:
     print(entry)
+
+# For loop with enumerate()
+for (idx, entry) in enumerate(arr):
+    print(f"Element {idx} is {entry}")
