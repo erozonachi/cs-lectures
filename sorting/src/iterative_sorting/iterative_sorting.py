@@ -24,8 +24,20 @@ print(selection_sort([5, 8, 2, 6, 9, 4, 3, 7, 1]))
 
 # TO-DO:  implement the Bubble Sort function below
 def bubble_sort(arr):
+    swapped = True
+    while swapped:
+        swapped = False
+        for i in range(0, len(arr) - 1):
+            if arr[i] > arr[i + 1]:
+                cur_element = arr[i]
+                arr[i] = arr[i + 1]
+                arr[i + 1] = cur_element
+                swapped = True
 
     return arr
+
+
+print(bubble_sort([19, 18, 17, 16, 15, 14, 13, 12, 11, 10]))
 
 
 # STRETCH: implement the Count Sort function below
