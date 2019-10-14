@@ -80,7 +80,7 @@ class DoublyLinkedList:
         self.head.prev = current_head.prev
         self.length -= 1;
 
-        return current_head
+        return current_head.value
 
    """Wraps the given value in a ListNode and inserts it
     as the new tail of the list. Don't forget to handle
@@ -102,7 +102,14 @@ class DoublyLinkedList:
     current tail's previous node the new tail of the List.
     Returns the value of the removed Node."""
     def remove_from_tail(self):
-        pass
+        if self.tail == None:
+            return False
+        current_tail = self.tail
+        self.tail = current_tail.prev
+        self.tail.next = current_tail.next
+        self.length -= 1;
+
+        return current_tail.value
 
     """Removes the input node from its current spot in the
     List and inserts it as the new head node of the List."""
