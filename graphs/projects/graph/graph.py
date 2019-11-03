@@ -33,7 +33,25 @@ class Graph:
         Print each vertex in breadth-first order
         beginning from starting_vertex.
         """
-        pass  # TODO
+        # pass  # TODO
+        for k in self.vertices:
+            self.vertices[k]['color'] = 'white'
+
+        self.vertices[starting_vertex]['color'] = 'gray'
+        bftQueue = Queue()
+        bftQueue.enqueue(starting_vertex)
+
+        while bftQueue.size() > 0:
+            u = bftQueue.queue[0]
+
+            for v in self.vertices[u]['neighbors']:
+                if self.vertices[v]['color'] == 'white':
+                    self.vertices[v]['color'] = 'gray'
+                    bftQueue.enqueue(v)
+
+            bftQueue.dequeue()
+            self.vertices[u]['color'] = 'black'
+            print(u)
 
     def dft(self, starting_vertex):
         """
