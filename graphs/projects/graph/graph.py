@@ -15,7 +15,7 @@ class Graph:
         Add a vertex to the graph.
         """
         # pass  # TODO
-        self.vertices[vertex] = set()
+        self.vertices[vertex] = {'neighbors': set(), 'color': None}
 
     def add_edge(self, v1, v2):
         """
@@ -23,7 +23,7 @@ class Graph:
         """
         # pass  # TODO
         if v1 in self.vertices and v2 in self.vertices:
-            self.vertices[v1].add(v2)
+            self.vertices[v1]['neighbors'].add(v2)
             return True
 
         return False
