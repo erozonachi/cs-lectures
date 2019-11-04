@@ -40,21 +40,37 @@ class Graph:
         visited = set()
 
         while bftQueue.size() > 0:
-            u = bftQueue.queue[0]
+            u = bftQueue.dequeue()
 
             for v in self.vertices[u]:
                 if v not in visited:
                     bftQueue.enqueue(v)
 
-            visited.add(bftQueue.dequeue())
+            visited.add(u)
             print(u)
+        print('------------------------------------')
 
     def dft(self, starting_vertex):
         """
         Print each vertex in depth-first order
         beginning from starting_vertex.
         """
-        pass  # TODO
+
+        dftStack = Stack()
+        dftStack.push(starting_vertex)
+
+        visited = set()
+
+        while dftStack.size() > 0:
+            u = dftStack.pop()
+
+            for v in self.vertices[u]:
+                if v not in visited and v not in dftStack.stack:
+                    dftStack.push(v)
+
+            visited.add(u)
+            print(u)
+        print('------------------------------------')
 
     def dft_recursive(self, starting_vertex):
         """
