@@ -161,6 +161,28 @@ class Graph:
 
         return -1
 
+    def dfs_path(self, starting_vertex, destination_vertex):
+        s = Stack()
+        s.push([starting_vertex])
+
+        visited = set()
+
+        while s.size() > 0:
+            path = s.pop()
+
+            if path[-1] == destination_vertex:
+                return path
+
+            for v in self.vertices[path[-1]]:
+                if v not in visited and v not in s.stack:
+                    new_path = list(path)
+                    new_path.append(v)
+                    s.push(new_path)
+
+            visited.add(path[-1])
+
+        return -1
+
 
 if __name__ == '__main__':
     graph = Graph()  # Instantiate your graph
@@ -236,4 +258,5 @@ if __name__ == '__main__':
         [1, 2, 4, 6]
         [1, 2, 4, 7, 6]
     '''
+    print(graph.dfs_path(1, 6))
     print(graph.dfs(1, 6))
