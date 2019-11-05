@@ -139,6 +139,28 @@ class Graph:
 
             visited.add(u)
 
+    def bfs_path(self, starting_vertex, destination_vertex):
+        q = Queue()
+        q.enqueue([starting_vertex])
+
+        visited = set()
+
+        while q.size() > 0:
+            path = q.dequeue()
+
+            if path[-1] == destination_vertex:
+                return path
+
+            for v in self.vertices[path[-1]]:
+                if v not in visited:
+                    new_path = list(path)
+                    new_path.append(v)
+                    q.enqueue(new_path)
+
+            visited.add(path[-1])
+
+        return -1
+
 
 if __name__ == '__main__':
     graph = Graph()  # Instantiate your graph
@@ -206,6 +228,7 @@ if __name__ == '__main__':
     Valid BFS path:
         [1, 2, 4, 6]
     '''
+    print(graph.bfs_path(1, 6))
     print(graph.bfs(1, 6))
 
     '''
